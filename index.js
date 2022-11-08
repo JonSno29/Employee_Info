@@ -1,14 +1,15 @@
+//Node
 const fs = require('fs')
 const inquirer = require('inquirer')
-
+// For HTML creation
 const generateHTML = require('./src/generateHTML');
-
+// Team profile generation
 const Manager = require("./lib/Manager")
 const Intern = require("./lib/Intern")
 const Engineer = require("./lib/Engineer")
-
+//questions prompted in terminal
 const team = []
-
+// Manager input
 const addManager = () => {
     return inquirer.prompt([
         {
@@ -40,7 +41,7 @@ const addManager = () => {
     }) 
 };
 
-
+// Add employee data
 const addEmployee = () => {
     return inquirer.prompt([
         {
@@ -84,13 +85,13 @@ const addEmployee = () => {
         }
     ])
     .then(employeeData => {
-        let {name, id, email, role, school, github, confirmNewEmployee} = employeeData;
+        let {name, email, id, role, school, github, confirmNewEmployee} = employeeData;
         let employee;
         if(role === "Engineer") {
-            employee = new Engineer(name, id, email, github)
+            employee = new Engineer(name, email, id, github)
             console.log(employee)
         } else if(role === "Intern") {
-            employee = new Intern(name, id, email, school)
+            employee = new Intern(name, email, id, school)
             console.log(employee)
         }
         team.push(employee);
@@ -102,6 +103,7 @@ const addEmployee = () => {
         }
     })
 }
+//briskly generates an HTML
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
         console.log(data),
@@ -109,7 +111,7 @@ const writeFile = data => {
     })
 }
 
-// Add input to as needed
+// Added input
  addManager()
     .then(addEmployee).then(team => {
         return generateHTML(team);

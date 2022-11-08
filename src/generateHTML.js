@@ -78,7 +78,7 @@ const employeeCards = pageArray.join('')
 };
 
 
-// Template literal for HTML boiler plate and links/scripts
+// Template literal for HTML boiler, scripts, links.
 const generateTeamPage = function(employeeCards) {
     return `<!DOCTYPE html>
   <html lang="en">
