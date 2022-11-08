@@ -47,3 +47,34 @@ const internsCard = function(intern) {
     </div>
 </div>`
 };
+
+const generateHTML = function(data) {
+    pageArray = [];
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+
+        // Calling managersCard
+        if (role === 'Manager') {
+            const managerCard = managersCard(employee);
+            pageArray.push(managerCard);
+        }
+
+        // Calling engineersCard
+        if (role === 'Engineer') {
+            const engineerCard = engineersCard(employee);
+            pageArray.push(engineerCard);
+        }
+// Calling InternsCard
+if (role === 'Intern') {
+    const internCard = internsCard(employee);
+    pageArray.push(internCard);
+}
+
+}
+const employeeCards = pageArray.join('')
+    const generateTeam = generateTeamPage(employeeCards);
+    return generateTeam;
+};
+
+
