@@ -98,3 +98,21 @@ const addEmployees = () => {
         }
     })
 }
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        console.log(data),
+            err ? console.log(err) : console.log("HTML with team data successfully created.")
+    })
+}
+
+// Add input to as needed
+addManager()
+    .then(addEmployee).then(teamArray => {
+        return generateHTML(teamArray);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+    });
