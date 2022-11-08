@@ -40,6 +40,8 @@
 
   Contributors: Jon Snover
   
+  https://github.com/JonSno29/Employee_Info.git
+  
   ## Tests
 Jest and test.js files.
   
