@@ -82,7 +82,8 @@ const addEmployees = () => {
             message: "Would you like to add another employee?",
             default: false
         }
-    ]).then(employeeData => {
+    ])
+    .then(employeeData => {
         let {name, id, email, role, school, github, newEmployee} = employeeData;
         let employee;
         if(role === "Engineer") {
@@ -109,8 +110,8 @@ const writeFile = data => {
 }
 
 // Add input to as needed
-addManager()
-    .then(addEmployee).then(teamArray => {
+ addManager
+    .then(addEmployees).then(teamArray => {
         return generateHTML(teamArray);
     })
     .then(pageHTML => {
@@ -119,3 +120,4 @@ addManager()
     .catch(err => {
         console.log(err);
     });
+    
