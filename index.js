@@ -41,7 +41,7 @@ const addManager = () => {
 };
 
 
-const addEmployees = () => {
+const addEmployee = () => {
     return inquirer.prompt([
         {
             type: "list",
@@ -78,13 +78,13 @@ const addEmployees = () => {
         }, 
         {
             type: "confirm",
-            name: "newEmployee",
+            name: "confirmNewEmployee",
             message: "Would you like to add another employee?",
             default: false
         }
     ])
     .then(employeeData => {
-        let {name, id, email, role, school, github, newEmployee} = employeeData;
+        let {name, id, email, role, school, github, confirmNewEmployee} = employeeData;
         let employee;
         if(role === "Engineer") {
             employee = new Engineer(name, id, email, github)
@@ -94,11 +94,11 @@ const addEmployees = () => {
             console.log(employee)
         }
         team.push(employee);
-        if(newEmployee) {
-            return addEmployee(team)
+        if(confirmNewEmployee) {
+            return addEmployee(team);
 
         } else {
-            return team
+            return team;
         }
     })
 }
@@ -111,8 +111,8 @@ const writeFile = data => {
 
 // Add input to as needed
  addManager()
-    .then(addEmployees).then(teamArray => {
-        return generateHTML(teamArray);
+    .then(addEmployee).then(team => {
+        return generateHTML(team);
     })
     .then(pageHTML => {
         return writeFile(pageHTML);

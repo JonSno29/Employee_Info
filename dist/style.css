@@ -1,0 +1,15 @@
+.navbar {
+    background-color: aqua;
+    color: brown;
+}
+
+
+.card-header {
+    background-color: rgb(38, 156, 179);
+}
+.card-body {
+    background-color: rgb(243, 99, 60);
+}
+.container {
+    background-color: rgb(159, 220, 233);
+}
