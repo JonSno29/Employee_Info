@@ -10,7 +10,7 @@ const Engineer = require("./lib/Engineer")
 const team = []
 
 const addManager = () => {
-    return inquirer.createPromptModule([
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -42,7 +42,7 @@ const addManager = () => {
 
 
 const addEmployees = () => {
-    return inquirer.createPromptModule([
+    return inquirer.prompt([
         {
             type: "list",
             name: "role",
@@ -95,7 +95,7 @@ const addEmployees = () => {
         }
         team.push(employee);
         if(newEmployee) {
-            return addEmployees(team)
+            return addEmployee(team)
 
         } else {
             return team
@@ -110,7 +110,7 @@ const writeFile = data => {
 }
 
 // Add input to as needed
- addManager
+ addManager()
     .then(addEmployees).then(teamArray => {
         return generateHTML(teamArray);
     })
